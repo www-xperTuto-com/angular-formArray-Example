@@ -1,0 +1,23 @@
+<form [formGroup]="tagsForm" (ngSubmit)="submit()">
+  WebSite: <input type="text" formControlName="webSite"><br>
+  Tags:
+  <div formArrayName="tags">
+    <div *ngFor="let tag of tags.controls; let tagIndex=index">
+      <div [formGroupName]="tagIndex">
+        {{tagIndex}}
+        technologie  :
+        <input type="text" formControlName="technologie">
+        nb_tutorials:
+        <input type="text" formControlName="nb_tutorials">
+
+        <button (click)="removeTag(tagIndex)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button type="submit">Submit</button>
+    <button type="button" (click)="addTags()">Add</button>
+  </p>
+
+</form>
